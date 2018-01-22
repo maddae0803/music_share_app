@@ -9,6 +9,22 @@
   </head>
 
   <body>
-    <%= yield %>
+  	<header class="navbar navbar-fixed-top navbar-inverse">
+      <div class="container">
+        <!--<%= link_to "Music Share", '#', id: "logo" %> -->
+        <nav>
+          <ul class="nav navbar-nav navbar-right">
+            <li><%= link_to "Home",   root_path %></li>
+            <!--- <li><%= link_to "About", '#' %></li> -->
+            <li><%= link_to "Help",   help_path %></li>
+            <li><%= link_to "Log In", '#' %></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <div class="container">
+    	<%= yield %>
+    	<%= render 'layouts/footer' %>
+    </div>
   </body>
 </html>
