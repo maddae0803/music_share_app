@@ -6,7 +6,7 @@ class UserTest < ActiveSupport::TestCase
   # end
 
   def setup
-    @user = User.new(name: "Example User", email: "user@example.com", password: "password", password_confirmation: "password")
+    @user = User.new(name: "Example User", email: "user@example.com", password: "password", password_confirmation: "password", user_type: "Artist")
   end
 
   test "should be valid" do
@@ -65,5 +65,10 @@ class UserTest < ActiveSupport::TestCase
   test "Password Should Be At Least 6 Characters Long" do
   	@user.password = @user.password_confirmation = 'b' * 4;
   	assert_not @user.valid? 
+  end
+
+  test "User Must Have a Type" do
+    @user.user_type = " ";
+    assert_not @user.valid?
   end
 end
