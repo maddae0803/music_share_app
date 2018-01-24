@@ -5,3 +5,9 @@ max:
   user_type: "Listener"
   password_digest: <%= User.digest('password') %>
 
+pablo:
+  name: "Pablo Example"
+  email: "pablo@example.com"
+  user_type: "Listener"
+  password_digest: <%= User.digest('password')
+
