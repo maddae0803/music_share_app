@@ -1,13 +1,17 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 max:
-  name: "Max Example"
-  email: "max@example.com"
-  user_type: "Listener"
+  name: Max Example
+  email: max@example.com
+  user_type: Listener
   password_digest: <%= User.digest('password') %>
+  activated: true
+  activated_at: <%= Time.zone.now %>
 
 pablo:
-  name: "Pablo Example"
-  email: "pablo@example.com"
-  user_type: "Listener"
-  password_digest: <%= User.digest('password')
+  name: Pablo Example
+  email: pablo@example.com
+  user_type: Listener
+  password_digest: <%= User.digest('password') %>
+  activated: true
+  activated_at: <%= Time.zone.now %>
 

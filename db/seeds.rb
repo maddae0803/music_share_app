@@ -8,11 +8,13 @@
 
 options = ["Songwriter/Artist", "Listener"]
 
-User.create!(name: "Example User", email: "example@oberlin.edu", password: "foobar", password_confirmation: "foobar", user_type: "Songwriter/Artist")
+User.create!(name: "Example User", email: "example@oberlin.edu", password: "foobar", password_confirmation: "foobar", user_type: "Songwriter/Artist",
+	activated: true, activated_at: Time.zone.now)
 
 40.times do |n|
 	name = Faker::Name.name
 	email = "example-#{n + 1}@oberlin.edu"
 	password = "password"
-	User.create!(name: name, email: email, password: password, password_confirmation: password, user_type: options[rand(2)])
+	User.create!(name: name, email: email, password: password, password_confirmation: password, user_type: options[rand(2)],
+		activated: true, activated_at: Time.zone.now)
 end

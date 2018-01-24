@@ -15,9 +15,9 @@ class UsersController < ApplicationController
   	@user = User.new(user_params)
   	if @user.save
   		# Handle a Successful Save
-      log_in @user
-  		flash[:success] = "Welcome!"
-  		redirect_to @user
+      UserMailer.account_activation(@user).deliver_now
+  		flash[:info] = "Activation Required: Please see your Email"
+  		redirect_to root_url
   	else
   		# Login Unsuccessful, Reload Page with Error Flashes
   		render 'new'

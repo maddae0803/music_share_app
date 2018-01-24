@@ -1,0 +1,11 @@
+<h1>Account Activation</h1>
+
+<p> Hi, <%= @user.name %>! </p>
+
+<p>
+  Thank you for signing up at MAXimum Music Sharing! We're excited to hear the beautiful music you upload and/or listen to!  </p>
+
+<p> To activate your account, please click on the following link: </p>
+<%= link_to "Activate Your Account", edit_account_activation_url(@user.activation_token, email: @user.email) %>
+
+<p> Cheers! </p>

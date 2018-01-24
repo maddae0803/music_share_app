@@ -1,0 +1,11 @@
+Hi <%= @user.name %>!
+
+Thank you for signing up at MAXimum Music Sharing! We're excited to hear the beautiful music you upload and/or listen to! 
+
+To activate your account, please click on the following link: 
+
+<%= edit_account_activation_url(@user.activation_token, email: @user.email) %>
+
+Cheers! 
+
+
