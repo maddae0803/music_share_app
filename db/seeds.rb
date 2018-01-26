@@ -18,3 +18,14 @@ User.create!(name: "Example User", email: "example@oberlin.edu", password: "foob
 	User.create!(name: name, email: email, password: password, password_confirmation: password, user_type: options[rand(2)],
 		activated: true, activated_at: Time.zone.now)
 end
+
+users = User.order(:created_at).take(3)
+
+10.times do |n|
+	title = "Some Song-#{n}"
+	artist = "Some Artist-#{n}"
+	users.each {
+		|user| 
+			user.posts.create!(song_title: title, song_artist: artist, song_comments: "")
+	}
+end

@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  has_many :posts, dependent: :destroy
+
 	attr_accessor :activation_token, :reset_token
 	before_save :downcase_email
 	before_create :create_activation_digest
@@ -7,6 +9,7 @@ class User < ApplicationRecord
 	VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 	validates :email, presence: true, length: { maximum: 255 }, format: {with: VALID_EMAIL_REGEX}, uniqueness: {case_sensitive: false}
 	has_secure_password
+
 
 	validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
 	validates :user_type, presence: true
@@ -42,6 +45,10 @@ class User < ApplicationRecord
 
   def send_password_reset_email
     UserMailer.password_reset(self).deliver_now
+  end
+
+  def feed
+    Post.where("user_id = ?", id)
   end
 
 

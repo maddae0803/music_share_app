@@ -71,4 +71,12 @@ class UserTest < ActiveSupport::TestCase
     @user.user_type = " ";
     assert_not @user.valid?
   end
+
+  test "posts should destroy when user is destroyed" do
+    @user.save
+    @user.posts.create(song_title: 'A', song_artist: 'B', song_comments: "")
+    assert_difference 'Post.count', -1 do
+      @user.destroy
+    end
+  end
 end

@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  song_title: Novacane
+  song_artist: Frank Ocean
+  song_comments: 
+  user: 
+  created_at: <%= 2.hours.ago %>
+
+most_recent:
+  song_title: Don't Stop Believing
+  song_artist: Journey
+  song_comments: Love This Song!
+  user:
+  created_at: <%= Time.zone.now %>
+
+three:
+  song_title: Dream On
+  song_artist: Aerosmith
+  song_comments: I miss the Obertones :(
+  user:
+  created_at: <%= 5.years.ago %>
+
+
+
