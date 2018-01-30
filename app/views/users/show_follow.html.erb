@@ -1,4 +1,5 @@
-<% provide(:title, @user.name) %>
+<% provide(:title, @title) %>
+
 <div class="row">
   <aside class="col-md-4">
     <section>
@@ -13,15 +14,14 @@
 			</section>
   </aside>
 
+<div class="col-md-8">
+    <h2> <center> <%= @title %> </center> </h2>
+     <% if @users.any? %>
+       <ul class="users follow">
+         <%= render @users %>
+       </ul>
 
- <div class="col-md-8">
-    <%= render 'follow_form' if logged_in? %>
-    <% if @user.posts.any? %>
-      <ol class="posts">
-        <%= render @posts %>
-      </ol>
-
-      <%= will_paginate @posts %>
-    <% end %>
-  </div>
-</div>
+       <%= will_paginate @users %>
+     <% end %>
+   </div>
+ </div>

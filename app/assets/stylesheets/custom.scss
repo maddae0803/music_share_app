@@ -151,7 +151,35 @@ audio {
 }
 
 .profile {
+	float: left;
 	border-radius: 100%;
-  width: 155px;
-	height: 180px;
+  max-width: 115px;
+	max-height: 140px;
+	margin-left: 2px;
+	margin-right: 15px;
+}
+
+.stats {
+  overflow: auto;
+  margin-top: 10px;
+	margin-left: 10px;
+	margin-bottom: 2px;
+  padding: 0;
+  a {
+    float: left;
+    padding: 0 10px;
+    border-left: 1px solid rgb(83, 141, 123);
+    color: rgb(17, 21, 129);
+    &:first-child {
+      padding-left: 0;
+      border: 0;
+    }
+    &:hover {
+      text-decoration: none;
+      color: blue;
+    }
+  }
+  strong {
+    display: block;
+  }
 }

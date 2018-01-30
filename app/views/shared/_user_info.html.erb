@@ -1,8 +1,10 @@
 <%= profile_pic_for current_user %>
 <h1> <%= current_user.name %> </h1>
-<span> <%= link_to "view my profile", current_user %> </span>
+<%= link_to "view my profile", current_user %> 
 <% if current_user.user_type == "Listener" %>
-	<span> <em> <p> Got a New Favorite Song you wanna share? </p> </em> </span>
+	<% provide(:placeholder_text, "Got a New Favorite Song you wanna share?") %>
+	<!-- <span> <em> <p> Got a New Favorite Song you wanna share? </p> </em> </span> -->
 <% else %>
-	<span> <p> Share Your Newest Song With The World! </p> </span>
+	<% provide(:placeholder_text, "Share Your Newest Song With The World!") %>
+	<!-- <span> <p> Share Your Newest Song With The World! </p> </span> -->
 <% end %>

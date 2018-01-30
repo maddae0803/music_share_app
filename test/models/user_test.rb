@@ -24,14 +24,14 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test "Name should not be longer than 50 characters" do
-  	@user.name = 'a' * 52; 
-  	assert_not @user.valid? 
-  end 
+  	@user.name = 'a' * 52;
+  	assert_not @user.valid?
+  end
 
   test "Email should not be longer than 255 characters" do
-  	@user.email = 'a' * 244 + "@example.com"; 
-  	assert_not @user.valid? 
-  end 
+  	@user.email = 'a' * 244 + "@example.com";
+  	assert_not @user.valid?
+  end
 
   test "Valid Emails Should Be Accepted" do
   	 valid_addresses = %w[user@example.com user@example.edu user@gmail.com]
@@ -64,7 +64,7 @@ class UserTest < ActiveSupport::TestCase
 
   test "Password Should Be At Least 6 Characters Long" do
   	@user.password = @user.password_confirmation = 'b' * 4;
-  	assert_not @user.valid? 
+  	assert_not @user.valid?
   end
 
   test "User Must Have a Type" do
@@ -77,6 +77,32 @@ class UserTest < ActiveSupport::TestCase
     @user.posts.create(song_title: 'A', song_artist: 'B', song_comments: "")
     assert_difference 'Post.count', -1 do
       @user.destroy
+    end
+  end
+
+  test "should follow and unfollow a user" do
+    max = users(:max)
+    pablo = users(:pablo)
+    assert_not max.following?(pablo)
+    max.follow(pablo)
+    assert max.following?(pablo)
+    assert pablo.followers.include?(max)
+    max.unfollow(pablo)
+    assert_not max.following?(pablo)
+  end
+
+  test "feeds should have the right posts" do
+    max = users(:max)
+    pablo = users(:pablo)
+    mel = users(:mel)
+    pablo.posts.each do |post_following|
+      assert max.feed.include?(post_following)
+    end
+    max.posts.each do |post_self|
+      assert max.feed.include?(post_self)
+    end
+    mel.posts.each do |post_not_following|
+      assert_not pablo.include?(post_not_following)
     end
   end
 end

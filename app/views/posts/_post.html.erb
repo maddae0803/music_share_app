@@ -1,26 +1,27 @@
 <li id="post-<%= post.id %>">
+  <%= profile_pic_for post.user %> 
   <span class="timestamp">
     <%= time_ago_in_words(post.created_at) %> ago.
   </span>
   <span class="info">
-  	<% if current_user?(post.user) %> 
+  	<% if current_user?(post.user) %>
   	  you added <strong> <%= post.song_title %> </strong> by <strong> <%= post.song_artist %> </strong>
   	<% else %>
   		<%= post.user.name %> added <strong> <%= post.song_title %> </strong> by <strong> <%= post.song_artist %> </strong>
   	<% end %>
-    
+
     </span>
-    <span> 
-      <%= audio_tag post.audio.url, controls: true if post.audio? %> 
+    <span>
+      <%= audio_tag post.audio.url, controls: true if post.audio? %>
     </span>
 
-  	<% unless post.song_comments.empty? %> 
+  	<% unless post.song_comments.empty? %>
  	<span class ="comments">
-  		<strong> Comments: </strong> <%= post.song_comments %> 
+  		<strong> Comments: </strong> <%= post.song_comments %>
  	</span>
- 	<% end %> 
+ 	<% end %>
 
- 	<% if current_user?(post.user) %> 
+ 	<% if current_user?(post.user) %>
  		<span> <%= link_to "delete song", post, method: :delete, class: "deleting", data: { confirm: "You sure you wanna do that hun?"} %> </span>
- 	<% end %> 
+ 	<% end %>
 </li>

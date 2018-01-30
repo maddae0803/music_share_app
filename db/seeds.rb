@@ -21,11 +21,26 @@ end
 
 users = User.order(:created_at).take(3)
 
+#posts
 10.times do |n|
 	title = "Some Song-#{n}"
 	artist = "Some Artist-#{n}"
 	users.each {
-		|user| 
+		|user|
 			user.posts.create!(song_title: title, song_artist: artist, song_comments: "")
 	}
 end
+
+# following/followers
+
+user = User.all.first
+following = User.all[2..15]
+followers = User.all[10..30]
+
+following.each {
+	|followed| user.follow(followed)
+}
+
+followers.each {
+	|follower| follower.follow(user)
+}

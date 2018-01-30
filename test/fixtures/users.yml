@@ -15,3 +15,10 @@ pablo:
   activated: true
   activated_at: <%= Time.zone.now %>
 
+mel:
+  name: Melanie Example
+  email: mel506@example.com
+  user_type: Songwriter/Artist
+  password_digest: <%= User.digest('password') %>
+  activated: true
+  activated_at: <%= Time.zone.now %>

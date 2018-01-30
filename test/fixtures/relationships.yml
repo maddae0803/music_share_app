@@ -1,0 +1,10 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+one:
+  follower: mel
+  followed: max
+two:
+  follower: max
+  followed: mel
+three:
+  follower: pablo
+  followed: max
