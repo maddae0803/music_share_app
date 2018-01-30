@@ -23,8 +23,8 @@ users = User.order(:created_at).take(3)
 
 #posts
 10.times do |n|
-	title = "Some Song-#{n}"
-	artist = "Some Artist-#{n}"
+	title = Faker::Coffee.blend_name
+	artist = Faker::Name.name
 	users.each {
 		|user|
 			user.posts.create!(song_title: title, song_artist: artist, song_comments: "")
